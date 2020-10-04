@@ -1,9 +1,24 @@
 package br.maua.interfaces;
 
+import br.maua.api.GetAPI;
+import br.maua.api.responsemodels.SearchResult;
+import br.maua.dao.AnimeDAO;
+import br.maua.dao.MangaDAO;
+import br.maua.exceptions.NoEntryDB;
+import br.maua.json.Parser;
+import br.maua.models.Anime;
+import br.maua.models.Manga;
+import br.maua.models.Media;
+import br.maua.models.MediaType;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
+
+    public static AnimeDAO animeDAO = new AnimeDAO();
+    public static MangaDAO mangaDAO = new MangaDAO();
 
     public static void title() {
         System.out.println("\n" +
@@ -18,15 +33,17 @@ public class Menu {
     public static int Instructions() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("=^..^=  =^..^=  =^..^=   =^..^=   =^..^=   =^..^=   =^..^=");
-
-                System.out.println("Welcome, please choose an option: ");
+        System.out.println("Welcome, please choose an option: ");
         System.out.println("->->->->->->->->->->->->-");
         System.out.println("[1] Search for Animes.");
         System.out.println("[2] Search for Mangas.");
         System.out.println("[3] View current database.");
         System.out.println("[0] Quit");
-        System.out.println("<*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*><*>\n");
-        return scanner.nextInt();
+        System.out.println("<*><*><*><*><*><*><*><*><*>\n");
+        int option = scanner.nextInt();
+        scanner.close();
+        return option;
+
     }
 
     private static final AvailableAction Quit = ()->{
@@ -35,13 +52,65 @@ public class Menu {
     };
 
     private static final AvailableAction SearchAnime = ()->{
-        System.out.println("Searched Anime");
+        boolean inDatabase = true;
+        ArrayList<IMedia> searchResults = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Type the title of the anime: ");
+        String title = scanner.nextLine();
+        searchResults.addAll(animeDAO.getEntryTitle(title));
+        System.out.println(animeDAO.getAll());
 
+        if(searchResults.isEmpty()){
+            inDatabase = false;
+            String json = GetAPI.search(MediaType.ANIME, title, 10);
+            searchResults.addAll(Parser.parseSearchResults(json));
+        }
+        searchResults.forEach(res -> {
+            System.out.println("[ID: "+res.getId()+"] - " + res.getTitle());
+        });
 
+        System.out.println("Digite o Id: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        scanner.close();
+        Anime anime;
+        if(inDatabase){
+             anime = animeDAO.getEntryID(id);
+        }
+        else {
+             anime  = Parser.parseAnime(GetAPI.getMedia(MediaType.ANIME, id));
+             animeDAO.insertEntry(anime);
+        }
+        System.out.println("ANIME: " + anime);
     };
 
     private static final AvailableAction SearchManga = ()->{
-        System.out.println("Searched Manga");
+        boolean inDatabase = true;
+        ArrayList<IMedia> searchResults = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Type the title of the manga: ");
+        String title = scanner.nextLine();
+        searchResults.addAll(mangaDAO.getEntryTitle(title));
+        if(searchResults.isEmpty()){
+            inDatabase = false;
+            String json = GetAPI.search(MediaType.MANGA, title, 10);
+            searchResults.addAll(Parser.parseSearchResults(json));
+        }
+        searchResults.forEach(res -> {
+            System.out.println("[ID: "+res.getId()+"] - " + res.getTitle());
+        });
+
+        System.out.println("Digite o Id: ");
+        int id = Integer.parseInt(scanner.nextLine());
+
+        Manga manga;
+        if(inDatabase){
+            manga = mangaDAO.getEntryID(id);
+        }
+        else {
+            manga  = Parser.parseManga(GetAPI.getMedia(MediaType.ANIME, id));
+            mangaDAO.insertEntry(manga);
+        }
+        System.out.println(manga);
     };
 
     private static final AvailableAction ViewDB = ()->{
@@ -56,7 +125,7 @@ public class Menu {
             int instruction = Instructions();
             try {
                 actions[instruction].Perform();
-            }catch (NullPointerException e){
+            }catch (NullPointerException | NoEntryDB | SQLException e){
                 System.out.println("This option is invalid");
             }
         }

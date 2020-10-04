@@ -11,10 +11,10 @@ public class TestGetAPI {
         String json = GetAPI.search(MediaType.ANIME, "naruto", 3);
         System.out.println(Parser.parseSearchResults(json));
 
-        json = GetAPI.getMedia(MediaType.ANIME, "16");
+        json = GetAPI.getMedia(MediaType.ANIME, 16);
         System.out.println(Parser.parseAnime(json));
 
-        json = GetAPI.getMedia(MediaType.MANGA, "16");
+        json = GetAPI.getMedia(MediaType.MANGA, 16);
         System.out.println(Parser.parseManga(json));
     }
 }

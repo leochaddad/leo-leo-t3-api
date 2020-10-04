@@ -113,9 +113,9 @@ public class MangaDAO implements DAO<Manga> {
     }
 
     @Override
-    public List<Manga> getEntryTitle(String title)  {
+    public ArrayList<Manga> getEntryTitle(String title)  {
 
-        List<Manga> mangaList = new ArrayList<>();
+        ArrayList<Manga> mangaList = new ArrayList<>();
 
         for (Manga manga : getAll())
         {

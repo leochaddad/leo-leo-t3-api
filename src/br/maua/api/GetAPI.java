@@ -74,7 +74,7 @@ public class GetAPI {
      * @param id Media ID
      * @return Media request result body
      */
-    public static String getMedia(MediaType type, String id){
+    public static String getMedia(MediaType type, int id){
 
         HttpURLConnection connection = connection(
                 ENDPOINT+ "/"+type+"/"+id);

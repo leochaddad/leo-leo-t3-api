@@ -3,6 +3,7 @@ package br.maua.dao;
 import br.maua.exceptions.NoEntryDB;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,5 +53,5 @@ public interface DAO <T> {
      * @param title nome do objeto cadastrado
      */
 
-    List<T> getEntryTitle(String title);
+    ArrayList<T> getEntryTitle(String title) throws NoEntryDB;
 }

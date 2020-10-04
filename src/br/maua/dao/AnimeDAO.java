@@ -108,9 +108,9 @@ public class AnimeDAO implements DAO<Anime> {
     }
 
     @Override
-    public List<Anime> getEntryTitle(String title) {
+    public ArrayList<Anime> getEntryTitle(String title) {
 
-        List<Anime> animeList = new ArrayList<>();
+        ArrayList<Anime> animeList = new ArrayList<>();
 
         for (Anime anime : getAll())
         {

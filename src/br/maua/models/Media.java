@@ -1,6 +1,7 @@
 package br.maua.models;
 
 
+import br.maua.interfaces.IMedia;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -8,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
  *
  */
 
-public class Media {
+public class Media implements IMedia {
 
     @SerializedName("mal_id")
     protected final int id;
