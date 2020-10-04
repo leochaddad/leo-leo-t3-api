@@ -1,4 +1,4 @@
 package br.maua.models;
 
-public class App {
+public class Manga {
 }

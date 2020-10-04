@@ -1,6 +1,6 @@
 package br.maua;
 
-import br.maua.models.interfaces.Menu;
+import br.maua.interfaces.Menu;
 
 
 public class Main {
