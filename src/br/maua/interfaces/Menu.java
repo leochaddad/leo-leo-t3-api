@@ -31,7 +31,7 @@ public class Menu {
     }
 
     public static int Instructions() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
         System.out.println("=^..^=  =^..^=  =^..^=   =^..^=   =^..^=   =^..^=   =^..^=");
         System.out.println("Welcome, please choose an option: ");
         System.out.println("->->->->->->->->->->->->-");
@@ -40,8 +40,8 @@ public class Menu {
         System.out.println("[3] View current database.");
         System.out.println("[0] Quit");
         System.out.println("<*><*><*><*><*><*><*><*><*>\n");
-        int option = scanner.nextInt();
-        scanner.close();
+        int option = Integer.parseInt(scanner1.nextLine());
+
         return option;
 
     }
@@ -71,7 +71,6 @@ public class Menu {
 
         System.out.println("Digite o Id: ");
         int id = Integer.parseInt(scanner.nextLine());
-        scanner.close();
         Anime anime;
         if(inDatabase){
              anime = animeDAO.getEntryID(id);
@@ -126,7 +125,7 @@ public class Menu {
             try {
                 actions[instruction].Perform();
             }catch (NullPointerException | NoEntryDB | SQLException e){
-                System.out.println("This option is invalid");
+                e.printStackTrace();
             }
         }
     }

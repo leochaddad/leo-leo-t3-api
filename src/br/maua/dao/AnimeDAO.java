@@ -65,7 +65,7 @@ public class AnimeDAO implements DAO<Anime> {
     public void insertEntry(Anime anime) throws SQLException {
 
         String query = String.format(
-                "INSERT INTO %s (id, title, description, episodes, score, poster_url) VALUES (%d, '%s\', '%s\', %d, %f, '%s\')",
+                "INSERT INTO %s (id, title, description, episodes, score, poster_url) VALUES (%d, '%s', '%s', %d, %f, '%s')",
                 TABLENAME,
                 anime.getId(),
                 anime.getTitle(),

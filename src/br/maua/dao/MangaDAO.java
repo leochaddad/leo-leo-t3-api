@@ -68,7 +68,7 @@ public class MangaDAO implements DAO<Manga> {
 
         String query = String.format(
                 "INSERT INTO %s (id, title, description, type, chapter, volume, score, poster_url) " +
-                        "VALUES (%d, '%s\', '%s\', '%s\', %d, %d, %f, '%s\')",
+                        "VALUES (%d, '%s', '%s', '%s', %d, %d, %f, '%s')",
                 TABLENAME,
                 manga.getId(),
                 manga.getTitle(),
