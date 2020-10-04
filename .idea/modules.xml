@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/leo-leo-t3-api.iml" filepath="$PROJECT_DIR$/.idea/leo-leo-t3-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/t3Java.iml" filepath="$PROJECT_DIR$/.idea/t3Java.iml" />
     </modules>
   </component>
 </project>

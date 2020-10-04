@@ -1,4 +1,4 @@
-package Maua.JSON;
+package br.maua.json;
 
 public class Parser {
 }

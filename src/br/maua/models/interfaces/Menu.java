@@ -1,4 +1,4 @@
-package Maua.Models.Interface;
+package br.maua.models.interfaces;
 
 public class Menu {
 

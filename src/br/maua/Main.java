@@ -1,7 +1,6 @@
-package Maua;
+package br.maua;
 
-import Maua.Models.Interface.Menu;
-import java.sql.*;
+import br.maua.models.interfaces.Menu;
 
 
 public class Main {
