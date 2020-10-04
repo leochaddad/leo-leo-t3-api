@@ -19,7 +19,7 @@ public class MangaDAO implements DAO<Manga> {
         // Estabelecendo conexão com o banco de dados
 
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite" + DATABASE);
+            conn = DriverManager.getConnection("jdbc:sqlite:" + DATABASE);
         } catch (SQLException e){
             e.printStackTrace();
         }
