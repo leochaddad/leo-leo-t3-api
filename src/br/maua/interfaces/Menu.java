@@ -54,7 +54,11 @@ public class Menu {
         title();
         while(true){
             int instruction = Instructions();
-            actions[instruction].Perform();
+            try {
+                actions[instruction].Perform();
+            }catch (NullPointerException e){
+                System.out.println("This option is invalid");
+            }
         }
     }
 
