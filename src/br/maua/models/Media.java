@@ -4,7 +4,7 @@ package br.maua.models;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Classe parente para implementacao de modelos de media (anime, manga, livros etc) para o DB
+ * Parent class foor media content (either anime or manga)
  *
  */
 
@@ -26,11 +26,11 @@ public class Media {
 
     /**
      *
-     * @param id  id identificadora do objeto de midia no MAL
-     * @param title titulo do objeto de midia
-     * @param description descricao do objeto de midia
-     * @param score valor medio dos votos (em escala 0-10)
-     * @param poster_url endereco do poster representativo da midia
+     * @param id  Unique identifier for each media object. The same is used in the API and local database
+     * @param title Media title
+     * @param description Media's description (synopsys)
+     * @param score Average of ratings ranging from 0 to 10
+     * @param poster_url URL referencing to the media's poster
      */
 
     public Media(int id, String title, String description, double score, String poster_url){

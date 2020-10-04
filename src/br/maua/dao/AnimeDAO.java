@@ -32,8 +32,28 @@ public class AnimeDAO implements DAO<Anime> {
         } catch (SQLException e){
             e.printStackTrace();
         }
+return null;
 
+    }
 
+    @Override
+    public void insertEntry(Anime anime) {
+
+    }
+
+    @Override
+    public void deleteEntry(Anime anime) {
+
+    }
+
+    @Override
+    public Anime getEntryID(int ID) {
+        return null;
+    }
+
+    @Override
+    public Anime getEntryTitle(String title) {
+        return null;
     }
 
 }
