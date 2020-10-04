@@ -1,6 +1,6 @@
 package br.maua.models;
 
-public class Manga extends MediaType {
+public class Manga extends Media {
 
     private final String type;
     private final int chapters;
@@ -17,4 +17,17 @@ public class Manga extends MediaType {
 
     };
 
+    @Override
+    public String toString() {
+        return "Manga{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", chapters=" + chapters +
+                ", volumes=" + volumes +
+                ", score=" + score +
+                ", description='" + description + '\'' +
+                ", poster_url='" + poster_url + '\'' +
+                '}';
+    }
 }

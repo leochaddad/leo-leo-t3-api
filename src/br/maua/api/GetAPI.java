@@ -1,5 +1,7 @@
 package br.maua.api;
 
+import br.maua.models.MediaType;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,8 +26,7 @@ public class GetAPI {
         return connection;
     }
 
-    public static String search(String type, String name, Integer limit){
-
+    public static String search(MediaType type, String name, Integer limit){
         HttpURLConnection connection = connection(
                 ENDPOINT+ "/search/"+type+"?q="+name+"&limit="+limit);
         StringBuilder content = new StringBuilder();
@@ -48,6 +49,29 @@ public class GetAPI {
 
     }
 
+    public static String getMedia(MediaType type, String mal_id){
+
+        HttpURLConnection connection = connection(
+                ENDPOINT+ "/"+type+"/"+mal_id);
+        StringBuilder content = new StringBuilder();
+        Integer responsecode;
+
+        try {
+            int statusCode = connection.getResponseCode();
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream())
+            );
+            in.lines().forEach(content::append);
+            in.close();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return content.toString();
+
+    }
 
 
 }
