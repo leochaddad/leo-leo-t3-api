@@ -7,7 +7,7 @@ public class Manga extends Media {
     private final int volumes;
 
 
-    Manga(int id, String title, String description, String type, int chapters, int volumes, double score, String poster_url){
+    public Manga(int id, String title, String description, String type, int chapters, int volumes, double score, String poster_url){
 
         super(id, title, description, score, poster_url);
 
@@ -16,6 +16,18 @@ public class Manga extends Media {
         this.volumes = volumes;
 
     };
+
+    public String getType() {
+        return type;
+    }
+
+    public int getChapters() {
+        return chapters;
+    }
+
+    public int getVolumes() {
+        return volumes;
+    }
 
     @Override
     public String toString() {
@@ -31,3 +43,4 @@ public class Manga extends Media {
                 '}';
     }
 }
+
