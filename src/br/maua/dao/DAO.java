@@ -52,5 +52,5 @@ public interface DAO <T> {
      * @param title nome do objeto cadastrado
      */
 
-    T getEntryTitle(String title) throws NoEntryDB;
+    List<T> getEntryTitle(String title);
 }

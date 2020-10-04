@@ -113,15 +113,18 @@ public class MangaDAO implements DAO<Manga> {
     }
 
     @Override
-    public Manga getEntryTitle(String title) throws NoEntryDB {
+    public List<Manga> getEntryTitle(String title)  {
+
+        List<Manga> mangaList = new ArrayList<>();
 
         for (Manga manga : getAll())
         {
-            if (title.equals(manga.getTitle().toLowerCase()))
-                return manga;
+            if (manga.getTitle().toLowerCase().contains(title))
+                mangaList.add(manga);
         }
 
-        throw new NoEntryDB();
+
+        return mangaList;
     }
 
 
