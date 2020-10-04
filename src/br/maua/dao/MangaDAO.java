@@ -67,7 +67,7 @@ public class MangaDAO implements DAO<Manga> {
     public void insertEntry(Manga manga) throws SQLException {
 
         String query = String.format(
-                "INSERT INTO %s (id, title, description, type, chapter, volume, score, poster_url) " +
+                "INSERT INTO %s (id, title, description, type, chapters, volumes, score, poster_url) " +
                         "VALUES (%d, '%s', '%s', '%s', %d, %d, %f, '%s')",
                 TABLENAME,
                 manga.getId(),
