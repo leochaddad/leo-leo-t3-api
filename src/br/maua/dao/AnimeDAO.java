@@ -108,15 +108,18 @@ public class AnimeDAO implements DAO<Anime> {
     }
 
     @Override
-    public Anime getEntryTitle(String title) throws NoEntryDB {
+    public List<Anime> getEntryTitle(String title) {
+
+        List<Anime> animeList = new ArrayList<>();
 
         for (Anime anime : getAll())
         {
-            if (title.equals(anime.getTitle().toLowerCase()))
-                return anime;
+            if (anime.getTitle().toLowerCase().contains(title))
+                animeList.add(anime);
         }
 
-        throw new NoEntryDB();
+
+        return animeList;
     }
 
 }
