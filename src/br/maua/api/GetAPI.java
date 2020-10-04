@@ -14,11 +14,11 @@ public class GetAPI {
     public static HttpURLConnection connection(String urlString){
 
         HttpURLConnection connection = null;
-        try{
+        try {
             URL url = new URL(urlString);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-        }catch(IOException e){
+        } catch(IOException e){
             e.printStackTrace();
         }
         return connection;
@@ -29,6 +29,7 @@ public class GetAPI {
         HttpURLConnection connection = connection(
                 ENDPOINT+ "/search/"+type+"?q="+name+"&limit="+limit);
         StringBuilder content = new StringBuilder();
+
         Integer responsecode;
 
         try {
