@@ -7,7 +7,7 @@ package br.maua.models;
  */
 
 
-public class Anime extends MediaType {
+public class Anime extends Media {
 
     private final int episodes;
 
@@ -20,5 +20,17 @@ public class Anime extends MediaType {
 
     public int getEpisodes() {
         return episodes;
+    }
+
+    @Override
+    public String toString() {
+        return "Anime{" +
+                "id=" + id +
+                ", title='" + title+
+                ", score=" + score +
+                ", episodes=" + episodes + + '\'' +
+                ", description='" + description + '\'' +
+                ", poster_url='" + poster_url + '\'' +
+                '}';
     }
 }
