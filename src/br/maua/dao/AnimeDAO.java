@@ -10,7 +10,6 @@ import java.util.List;
 
 public class AnimeDAO implements DAO<Anime> {
 
-    private String TABLENAME = "Anime";
     private Connection conn;
 
     public AnimeDAO(){
@@ -32,7 +31,7 @@ public class AnimeDAO implements DAO<Anime> {
 
         List<Anime> animeList = new ArrayList<>();
 
-        String query = String.format("SELECT * FROM %s", TABLENAME);
+        String query = String.format("SELECT * FROM Anime");
 
         try {
 
@@ -65,21 +64,16 @@ public class AnimeDAO implements DAO<Anime> {
     public void insertEntry(Anime anime) throws SQLException {
 
 
-
-        String query = String.format(
-                "INSERT INTO %s (id, title, description, episodes, score, poster_url) " +
-                        "VALUES (%d, ''%s'', ''%s'', %d, %f, ''%s'')",
-                TABLENAME,
-                anime.getId(),
-                anime.getTitle(),
-                anime.getDescription(),
-                anime.getEpisodes(),
-                anime.getScore(),
-                anime.getPoster_url()
-        );
-
+        String query = "INSERT INTO Anime (id, title, description, episodes, score, poster_url) VALUES (?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = conn.prepareStatement(query);
+
+        ps.setInt(1, anime.getId());
+        ps.setString(2, anime.getTitle());
+        ps.setString(3, anime.getDescription());
+        ps.setInt(4, anime.getEpisodes());
+        ps.setDouble(5, anime.getScore());
+        ps.setString(6, anime.getPoster_url());
 
         ps.executeUpdate();
 
@@ -90,8 +84,7 @@ public class AnimeDAO implements DAO<Anime> {
     public void deleteEntry(Anime anime) throws SQLException {
 
         String query = String.format(
-                "DELETE FROM %s WHERE id = %d",
-                TABLENAME,
+                "DELETE FROM Anime WHERE id = %d",
                 anime.getId()
         );
 

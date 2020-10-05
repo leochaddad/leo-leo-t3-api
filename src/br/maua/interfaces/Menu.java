@@ -33,12 +33,12 @@ public class Menu {
     public static int Instructions() {
         Scanner scanner1 = new Scanner(System.in);
         System.out.println("=^..^=  =^..^=  =^..^=   =^..^=   =^..^=   =^..^=   =^..^=");
-        System.out.println("Welcome, please choose an option: ");
+        System.out.println("Bem-vindo(a), por favor selecione uma opção: ");
         System.out.println("->->->->->->->->->->->->-");
-        System.out.println("[1] Search for Animes.");
-        System.out.println("[2] Search for Mangas.");
-        System.out.println("[3] View current database.");
-        System.out.println("[0] Quit");
+        System.out.println("[1] Pesquisar Animes.");
+        System.out.println("[2] Pesquisar Mangas.");
+        System.out.println("[3] Ver o banco de dados atual.");
+        System.out.println("[0] Sair");
         System.out.println("<*><*><*><*><*><*><*><*><*>\n");
         int option = Integer.parseInt(scanner1.nextLine());
 
