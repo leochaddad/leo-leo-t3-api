@@ -24,13 +24,13 @@ public class Anime extends Media {
 
     @Override
     public String toString() {
-        return "Anime{" +
-                "id=" + id +
-                ", title='" + title+
-                ", score=" + score +
-                ", episodes=" + episodes + + '\'' +
-                ", description='" + description + '\'' +
-                ", poster_url='" + poster_url + '\'' +
-                '}';
+        return "\n----- "+ title+" -----"+
+                "\n*ID:" + id+
+                "\n*Title:" + title+
+                "\n*Score=" + score +
+                "\n*Episodes:" + episodes +
+                "\n*Description:" + description +
+                "\n*Poster URL:" + poster_url +
+                "------------------------\n";
     }
 }
