@@ -58,7 +58,6 @@ public class Menu {
         System.out.println("Type the title of the anime: ");
         String title = scanner.nextLine();
         searchResults.addAll(animeDAO.getEntryTitle(title));
-        System.out.println(animeDAO.getAll());
 
         if(searchResults.isEmpty()){
             inDatabase = false;
@@ -76,7 +75,10 @@ public class Menu {
              anime = animeDAO.getEntryID(id);
         }
         else {
-             anime  = Parser.parseAnime(GetAPI.getMedia(MediaType.ANIME, id));
+
+
+            anime  = Parser.parseAnime(GetAPI.getMedia(MediaType.ANIME, id));
+            System.out.println("ANIME: " + anime);
              animeDAO.insertEntry(anime);
         }
         System.out.println("ANIME: " + anime);

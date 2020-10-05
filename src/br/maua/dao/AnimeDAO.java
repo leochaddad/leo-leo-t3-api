@@ -68,7 +68,7 @@ public class AnimeDAO implements DAO<Anime> {
 
         String query = String.format(
                 "INSERT INTO %s (id, title, description, episodes, score, poster_url) " +
-                        "VALUES (%d, '%s', '%s', %d, %f, '%s')",
+                        "VALUES (%d, ''%s'', ''%s'', %d, %f, ''%s'')",
                 TABLENAME,
                 anime.getId(),
                 anime.getTitle(),

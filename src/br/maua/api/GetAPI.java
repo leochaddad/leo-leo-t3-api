@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 /**
  * Class with static methods to fetch data from the API
@@ -28,7 +29,7 @@ public class GetAPI {
 
         HttpURLConnection connection = null;
         try {
-            URL url = new URL(urlString);
+            URL url = new URL(urlString.replace(" ", "+"));
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
         } catch(IOException e){
