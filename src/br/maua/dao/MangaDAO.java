@@ -10,7 +10,6 @@ import java.util.List;
 
 public class MangaDAO implements DAO<Manga> {
 
-    private String TABLENAME = "Manga";
     private Connection conn;
 
     public MangaDAO(){
@@ -32,7 +31,7 @@ public class MangaDAO implements DAO<Manga> {
 
         List<Manga> mangaList = new ArrayList<>();
 
-        String query = String.format("SELECT * FROM %s", TABLENAME);
+        String query = "SELECT * FROM Manga";
 
         try {
 
@@ -66,21 +65,19 @@ public class MangaDAO implements DAO<Manga> {
     @Override
     public void insertEntry(Manga manga) throws SQLException {
 
-        String query = String.format(
-                "INSERT INTO %s (id, title, description, type, chapters, volumes, score, poster_url) " +
-                        "VALUES (%d, '%s', '%s', '%s', %d, %d, %f, '%s')",
-                TABLENAME,
-                manga.getId(),
-                manga.getTitle(),
-                manga.getDescription(),
-                manga.getType(),
-                manga.getChapters(),
-                manga.getVolumes(),
-                manga.getScore(),
-                manga.getPoster_url()
-        );
+        String query = "INSERT INTO Manga (id, title, description, type, chapters, volumes, score, poster_url) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = conn.prepareStatement(query);
+
+        ps.setInt(1, manga.getId());
+        ps.setString(2, manga.getTitle());
+        ps.setString(3, manga.getDescription());
+        ps.setString(4, manga.getType());
+        ps.setInt(5, manga.getChapters());
+        ps.setInt(6, manga.getVolumes());
+        ps.setDouble(7, manga.getScore());
+        ps.setString(8, manga.getPoster_url());
 
         ps.executeUpdate();
 
@@ -91,8 +88,7 @@ public class MangaDAO implements DAO<Manga> {
     public void deleteEntry(Manga manga) throws SQLException {
 
         String query = String.format(
-                "DELETE FROM %s WHERE id = %d",
-                TABLENAME,
+                "DELETE FROM Manga WHERE id = %d",
                 manga.getId()
         );
 
