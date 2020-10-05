@@ -31,7 +31,7 @@ public class MangaDAO implements DAO<Manga> {
 
         List<Manga> mangaList = new ArrayList<>();
 
-        String query = String.format("SELECT * FROM %s", TABLENAME);
+        String query = "SELECT * FROM Manga";
 
         try {
 
@@ -88,8 +88,7 @@ public class MangaDAO implements DAO<Manga> {
     public void deleteEntry(Manga manga) throws SQLException {
 
         String query = String.format(
-                "DELETE FROM %s WHERE id = %d",
-                TABLENAME,
+                "DELETE FROM Manga WHERE id = %d",
                 manga.getId()
         );
 
