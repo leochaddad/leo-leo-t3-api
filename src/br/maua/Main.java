@@ -1,21 +1,16 @@
 package br.maua;
 
-import br.maua.dao.AnimeDAO;
-import br.maua.dao.MangaDAO;
-import br.maua.interfaces.App;
-import br.maua.interfaces.Menu;
-import br.maua.models.Anime;
-import br.maua.models.Manga;
+//Leonardo Haddad 18.00442-3
+//Leonardo Rodrigues 18.02401-7
 
+
+import br.maua.interfaces.App;
 
 public class Main {
 
     public static void main(String[] args) {
 
-
         App.Start();
-
-
 
     }
 }

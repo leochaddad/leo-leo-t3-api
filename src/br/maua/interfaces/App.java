@@ -26,7 +26,7 @@ public class App {
         System.out.println(helperText);
         String text = scanner.nextLine();
         while (!Utils.validadeText(text)) {
-            System.out.println("Illegal input");
+            System.out.println("Entrada ilegal");
             System.out.println(helperText);
             text = scanner.nextLine();
         }
@@ -35,11 +35,11 @@ public class App {
 
     private static  int promptOption( ) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Option: ");
+        System.out.print("Opção: ");
         String option = scanner.nextLine();
         while (!Utils.validateOption(option)){
-            System.out.println("Illegal input");
-            System.out.println("Option: ");
+            System.out.println("Opção Ilegal");
+            System.out.println("Opção: ");
             option = scanner.nextLine();
         }
         return Integer.parseInt(option);

@@ -1,0 +1,9 @@
+br.maua
+br.maua.api
+br.maua.api.responsemodels
+br.maua.dao
+br.maua.exceptions
+br.maua.interfaces
+br.maua.json
+br.maua.models
+br.maua.utils

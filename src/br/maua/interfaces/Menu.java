@@ -1,18 +1,5 @@
 package br.maua.interfaces;
 
-import br.maua.api.GetAPI;
-import br.maua.dao.AnimeDAO;
-import br.maua.dao.MangaDAO;
-import br.maua.exceptions.NoEntryDB;
-import br.maua.json.Parser;
-import br.maua.models.Anime;
-import br.maua.models.Manga;
-import br.maua.models.MediaType;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Menu {
 
 
