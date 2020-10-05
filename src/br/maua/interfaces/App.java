@@ -8,6 +8,7 @@ import br.maua.json.Parser;
 import br.maua.models.Anime;
 import br.maua.models.Manga;
 import br.maua.models.MediaType;
+import br.maua.utils.Utils;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,6 +20,30 @@ public class App {
 
     private static AnimeDAO animeDAO = new AnimeDAO();
     private static MangaDAO mangaDAO = new MangaDAO();
+
+    private static  String promptTitle(String helperText) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(helperText);
+        String text = scanner.nextLine();
+        while (!Utils.validadeText(text)) {
+            System.out.println("Illegal input");
+            System.out.println(helperText);
+            text = scanner.nextLine();
+        }
+        return text;
+    }
+
+    private static  int promptOption( ) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Option: ");
+        String option = scanner.nextLine();
+        while (!Utils.validateOption(option)){
+            System.out.println("Illegal input");
+            System.out.println("Option: ");
+            option = scanner.nextLine();
+        }
+        return Integer.parseInt(option);
+    }
 
     /**
      * Displays search results formatted with ID for user to choose
@@ -46,8 +71,8 @@ public class App {
         boolean inDatabase = true;
         ArrayList<IMedia> searchResults = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Type the title of the anime: ");
-        String title = scanner.nextLine();
+        String title = App.promptTitle("Type the title of the anime: ");
+
         searchResults.addAll(animeDAO.getEntryTitle(title));
 
         if(searchResults.isEmpty()){
@@ -80,8 +105,7 @@ public class App {
         boolean inDatabase = true;
         ArrayList<IMedia> searchResults = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Type the title of the manga: ");
-        String title = scanner.nextLine();
+        String title = App.promptTitle("Type the title of the manga: ");
         searchResults.addAll(mangaDAO.getEntryTitle(title));
         if(searchResults.isEmpty()){
             inDatabase = false;
@@ -133,7 +157,8 @@ public class App {
     public static void Start() {
         Menu.title();
         while(true){
-            int instruction = Menu.Instructions();
+            Menu.Instructions();
+            int instruction = App.promptOption();
             try {
                 actions[instruction].Perform();
             }catch (NullPointerException | NoEntryDB | SQLException e){

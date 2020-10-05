@@ -27,8 +27,7 @@ public class Menu {
                 "                                                      \n");
     }
 
-    public static int Instructions() {
-        Scanner scanner1 = new Scanner(System.in);
+    public static void Instructions() {
         System.out.println("=^..^=  =^..^=  =^..^=   =^..^=   =^..^=   =^..^=   =^..^=");
         System.out.println("Bem-vindo(a), por favor selecione uma opção: ");
         System.out.println("->->->->->->->->->->->->-");
@@ -37,9 +36,8 @@ public class Menu {
         System.out.println("[3] Ver o banco de dados atual.");
         System.out.println("[0] Sair");
         System.out.println("<*><*><*><*><*><*><*><*><*>\n");
-        int option = Integer.parseInt(scanner1.nextLine());
 
-        return option;
+
 
     }
 
