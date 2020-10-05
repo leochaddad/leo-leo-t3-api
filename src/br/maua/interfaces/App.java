@@ -98,7 +98,7 @@ public class App {
             manga = mangaDAO.getEntryID(id);
         }
         else {
-            manga  = Parser.parseManga(GetAPI.getMedia(MediaType.ANIME, id));
+            manga  = Parser.parseManga(GetAPI.getMedia(MediaType.MANGA, id));
             mangaDAO.insertEntry(manga);
         }
         System.out.println(manga);
