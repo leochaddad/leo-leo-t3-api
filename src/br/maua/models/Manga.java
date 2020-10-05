@@ -31,16 +31,16 @@ public class Manga extends Media {
 
     @Override
     public String toString() {
-        return "Manga{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", type='" + type + '\'' +
-                ", chapters=" + chapters +
-                ", volumes=" + volumes +
-                ", score=" + score +
-                ", description='" + description + '\'' +
-                ", poster_url='" + poster_url + '\'' +
-                '}';
+        return "\n----- "+ title+" -----"+
+                "\n*ID: " + id+
+                "\n*Score: " + score +
+                "\n*Description: " + description +
+                "\n*Type: " + type +
+                "\nChapters: " + chapters +
+                "\nVolumes: " + volumes +
+                "\n*Poster URL: " + poster_url + '\n'+
+                "------------------------\n";
+
     }
 }
 

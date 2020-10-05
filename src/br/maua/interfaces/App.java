@@ -108,7 +108,8 @@ public class App {
      * Displays all media currently in the database
      */
     private static final AvailableAction ViewDB = ()->{
-        System.out.println("Look at the database!!!");
+        System.out.println(mangaDAO.getAll());
+        System.out.println(animeDAO.getAll());
     };
 
     /**
