@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static br.maua.interfaces.Menu.*;
+
 public class App {
 
     private static AnimeDAO animeDAO = new AnimeDAO();
@@ -32,7 +34,7 @@ public class App {
      * Prints goodbye and ends the program with a success code
      */
     private static final AvailableAction Quit = ()->{
-        System.out.println("Goodbye");
+        Goodbye();
         System.exit(0);
     };
 
@@ -108,7 +110,15 @@ public class App {
      * Displays all media currently in the database
      */
     private static final AvailableAction ViewDB = ()->{
-        System.out.println("Look at the database!!!");
+
+        showAnime();
+        for (Anime anime : animeDAO.getAll())
+            System.out.println(anime.getId() + " " + anime.getTitle());
+
+        showManga();
+        for (Manga manga : mangaDAO.getAll())
+            System.out.println(manga.getId() + " " + manga.getTitle());
+
     };
 
     /**

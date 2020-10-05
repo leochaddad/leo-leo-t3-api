@@ -43,6 +43,22 @@ public class Menu {
 
     }
 
+    public  static  void showManga(){
+        System.out.println("=^..^=  =^..^=  =^..^=   =^..^=   =^..^=   =^..^=   =^..^=");
+        System.out.println("                      MANGAS                              ");
+        System.out.println("=^..^=  =^..^=  =^..^=   =^..^=   =^..^=   =^..^=   =^..^=");
+    }
+
+    public  static  void showAnime(){
+        System.out.println("=^..^=  =^..^=  =^..^=   =^..^=   =^..^=   =^..^=   =^..^=");
+        System.out.println("                      ANIME                               ");
+        System.out.println("=^..^=  =^..^=  =^..^=   =^..^=   =^..^=   =^..^=   =^..^=");
+    }
+
+
+    public static void Goodbye(){
+        System.out.println("Até mais!!!");
+    }
 
 
 }
